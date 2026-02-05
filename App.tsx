@@ -15,7 +15,7 @@ const INITIAL_STATS: Stats = {
 };
 
 const INITIAL_PROFILE: UserProfile = {
-  name: 'Hunter Tanpa Nama',
+  name: 'Zhar ID',
   rank: QuestRank.E,
   level: 1,
   exp: 0,
@@ -51,6 +51,10 @@ const App: React.FC = () => {
     const saved = localStorage.getItem('sovereign_v6_profile');
     if (saved) {
       const parsed = JSON.parse(saved);
+      // Pastikan nama terupdate jika masih default lama, tapi biarkan jika user sudah ubah sendiri
+      if (parsed.name === 'Hunter Tanpa Nama') {
+        parsed.name = 'Zhar ID';
+      }
       return { ...INITIAL_PROFILE, ...parsed };
     }
     return INITIAL_PROFILE;
